@@ -12,6 +12,7 @@ import AppTextInput from './component/AppTextInput';
 import AppPicker from './component/AppPicker';
 import LoginScreen from './screen/LoginScreen';
 import ListingEditScreen from './screen/ListingEditScreen';
+import Test from './screen/Test';
 
 const listData = [
   {label: 'Furniture', value: 1},
@@ -38,7 +39,8 @@ export default function App() {
         onSelectItem={selectedItem => console.log(selectedItem)}
       /> */}
       {/* <LoginScreen /> */}
-      <ListingEditScreen />
+      {/* <ListingEditScreen /> */}
+      <Test />
     </View>
   );
 }
