@@ -9,7 +9,6 @@ import defaultStyles from '../config/styles';
 import PickerItem from './PickerItem';
 
 import {
-  numberOfColumns,
   Text,
   View,
   StyleSheet,
@@ -29,6 +28,8 @@ function AppPicker({
   selectedItem,
   // 假如没有传递的话，就默认使用pickerItem（就是下拉的选项s）
   PickerItemComponent = PickerItem,
+  // 让pick选项horizotal
+  numberOfColumns,
   width = '100%',
 }) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -57,23 +58,37 @@ function AppPicker({
       </TouchableWithoutFeedback>
       <Modal visible={modalVisible} animationType="slide">
         <SafeAreaView>
-          <Button title="Close" onPress={() => setModalVisible(false)} />
-          <FlatList
-            // 横向排放
-            numColumns={numberOfColumns}
-            data={items}
-            keyExtractor={item => item.value.toString()}
-            renderItem={({item}) => (
-              <PickerItemComponent
-                item={item}
-                label={item.label}
-                onPress={() => {
-                  setModalVisible(false);
-                  onSelectItem(item);
-                }}
-              />
-            )}
-          />
+          <View
+            style={{
+              marginBottom: 30,
+              width: 200,
+              alignSelf: 'center',
+              borderRadius: 50,
+              overflow: 'hidden',
+            }}>
+            <Button title="Close" onPress={() => setModalVisible(false)} />
+          </View>
+
+          {/* 转为 horizontal 设定的style */}
+          {/* <View style={numberOfColumns ? styles.flatlist : null}> */}
+          <View style={numberOfColumns && styles.flatlist}>
+            <FlatList
+              // 横向排放
+              numColumns={numberOfColumns}
+              data={items}
+              keyExtractor={item => item.value.toString()}
+              renderItem={({item}) => (
+                <PickerItemComponent
+                  item={item}
+                  label={item.label}
+                  onPress={() => {
+                    setModalVisible(false);
+                    onSelectItem(item);
+                  }}
+                />
+              )}
+            />
+          </View>
         </SafeAreaView>
       </Modal>
     </>
@@ -94,6 +109,10 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 1,
+  },
+  flatlist: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
