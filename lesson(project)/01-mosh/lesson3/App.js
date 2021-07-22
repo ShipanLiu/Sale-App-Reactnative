@@ -13,6 +13,7 @@ import AppPicker from './component/AppPicker';
 import LoginScreen from './screen/LoginScreen';
 import ListingEditScreen from './screen/ListingEditScreen';
 import Test from './screen/Test';
+import ImgPickerScreen from './screen/ImgPickerScreen';
 
 const listData = [
   {label: 'Furniture', value: 1},
@@ -40,7 +41,8 @@ export default function App() {
       /> */}
       {/* <LoginScreen /> */}
       {/* <ListingEditScreen /> */}
-      <Test />
+      <ImgPickerScreen />
+      {/* <Test /> */}
     </View>
   );
 }
