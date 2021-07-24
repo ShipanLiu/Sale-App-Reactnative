@@ -1,5 +1,5 @@
 /*
-  CategoryPickerItem 是 DIY 种类的 PickerItem
+  CategoryPickerItem 是 DIY 种类的 PickerItem + icon
 */
 
 import React from 'react';

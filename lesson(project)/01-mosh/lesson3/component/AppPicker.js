@@ -26,7 +26,7 @@ function AppPicker({
   onSelectItem,
   placeholder,
   selectedItem,
-  // 假如没有传递的话，就默认使用pickerItem（就是下拉的选项s）
+  // 假如没有传递的话，就默认使用pickerItem（就是下拉的选项是文字）
   PickerItemComponent = PickerItem,
   // 让pick选项horizotal
   numberOfColumns,

@@ -1,5 +1,5 @@
-import React from 'react';
-import {StyleSheet, SafeAreaView} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {StyleSheet, SafeAreaView, Button} from 'react-native';
 import * as Yup from 'yup';
 
 import {
@@ -9,14 +9,19 @@ import {
   SubmitButton,
 } from '../component/forms/index';
 import CategoryPickerItem from '../component/CategoryPickerItem';
+import FormImagePicker from '../component/forms/FormImagePicker';
+import useLocation from '../hooks/useLocation';
+import usePermission from '../hooks/usePermission';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label('Title'),
   price: Yup.number().required().min(1).max(10000).label('Price'),
   description: Yup.string().label('Description'),
   category: Yup.object().required().nullable().label('Category'),
+  images: Yup.array().min(1, 'please select at least one image'),
 });
 
+//  下拉菜单之后显示的种类
 const categories = [
   {
     backgroundColor: '#fc5c65',
@@ -75,6 +80,9 @@ const categories = [
 ];
 
 function ListingEditScreen() {
+  const myLocation = useLocation();
+  const permissionResult = usePermission();
+
   return (
     <SafeAreaView style={styles.container}>
       <Form
@@ -83,9 +91,12 @@ function ListingEditScreen() {
           price: '',
           description: '',
           category: null,
+          images: [],
         }}
         onSubmit={values => console.log(values)}
         validationSchema={validationSchema}>
+        <FormImagePicker name="images" />
+        {/* name="title" 就会和 validationSchema 连接起来*/}
         <FormField maxLength={255} name="title" placeholder="Title" />
         <FormField
           keyboardType="numeric"
@@ -109,8 +120,15 @@ function ListingEditScreen() {
           numberOfLines={3}
           placeholder="Description"
         />
+
+        {/* 按下之后， 把 setFieldValue（）收集到的state 打包发走。*/}
         <SubmitButton title="Post" />
       </Form>
+      <Button title="test position" onPress={() => console.log(myLocation)} />
+      <Button
+        title="test permission"
+        onPress={() => console.log(permissionResult)}
+      />
     </SafeAreaView>
   );
 }

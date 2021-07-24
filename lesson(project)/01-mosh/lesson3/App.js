@@ -14,6 +14,7 @@ import LoginScreen from './screen/LoginScreen';
 import ListingEditScreen from './screen/ListingEditScreen';
 import Test from './screen/Test';
 import ImgPickerScreen from './screen/ImgPickerScreen';
+import ImageInput from './component/ImageInput';
 
 const listData = [
   {label: 'Furniture', value: 1},
@@ -38,11 +39,13 @@ export default function App() {
         placeholder="jiba"
         icon="email"
         onSelectItem={selectedItem => console.log(selectedItem)}
+        numberOfColumns={3}
       /> */}
       {/* <LoginScreen /> */}
-      {/* <ListingEditScreen /> */}
-      <ImgPickerScreen />
+      <ListingEditScreen />
+      {/* <ImgPickerScreen /> */}
       {/* <Test /> */}
+      {/* <ImageInput /> */}
     </View>
   );
 }
