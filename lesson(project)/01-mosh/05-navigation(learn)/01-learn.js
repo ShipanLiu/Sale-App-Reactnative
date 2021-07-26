@@ -32,11 +32,6 @@ const Jiba2 = ({navigation}) => {
         title="go to Jiba1"
         onPress={() => navigation.navigate('jiba1')}
       />
-      {/* 不可能 到sub*/}
-      {/* <Button
-        title="go to Jiba3"
-        onPress={() => navigation.navigate('jiba3')}
-      /> */}
     </View>
   );
 };

@@ -1,7 +1,9 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import {View, Text, StatusBar} from 'react-native';
-import WelcomPage from './screen/WelcomePage';
+import {NavigationContainer} from '@react-navigation/native';
+
+import WelcomPage from './screen/WelcomeScreen';
 import CardScreen from './screen/CardScreen';
 import ListingDetailsScreen from './screen/ListingDetailsScreen';
 import ViewImageScreen from './screen/ViewImageScreen';
@@ -15,16 +17,18 @@ import ListingEditScreen from './screen/ListingEditScreen';
 import Test from './screen/Test';
 import ImgPickerScreen from './screen/ImgPickerScreen';
 import ImageInput from './component/ImageInput';
+import AppNavigator from './navigator/AppNavigator';
+import navigationTheme from './navigator/navigationTheme';
 
-const listData = [
-  {label: 'Furniture', value: 1},
-  {label: 'Clothing', value: 2},
-  {label: 'Cameras', value: 3},
-  {label: 'jibas', value: 4},
-];
+// const listData = [
+//   {label: 'Furniture', value: 1},
+//   {label: 'Clothing', value: 2},
+//   {label: 'Cameras', value: 3},
+//   {label: 'jibas', value: 4},
+// ];
 export default function App() {
   return (
-    <View>
+    <>
       <StatusBar backgroundColor="transparent" />
       {/* <WelcomPage /> */}
       {/* <CardScreen /> */}
@@ -42,10 +46,13 @@ export default function App() {
         numberOfColumns={3}
       /> */}
       {/* <LoginScreen /> */}
-      <ListingEditScreen />
+      {/* <ListingEditScreen /> */}
       {/* <ImgPickerScreen /> */}
       {/* <Test /> */}
       {/* <ImageInput /> */}
-    </View>
+      <NavigationContainer theme={navigationTheme}>
+        <AppNavigator />
+      </NavigationContainer>
+    </>
   );
 }
